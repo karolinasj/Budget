@@ -2,8 +2,8 @@
 
 void UsersFile::addUserToFile(User user) {
     CMarkup xml;
-    nazwaPlikuZUzytkownikami = "PlikZUserami.xml";
-    bool fileExists = xml.Load( nazwaPlikuZUzytkownikami );
+    usersFileName = "PlikZUserami.xml";
+    bool fileExists = xml.Load( usersFileName );
 
     if(!fileExists) {
         xml.AddElem( "USERSLIST" );
@@ -19,7 +19,7 @@ void UsersFile::addUserToFile(User user) {
     xml.AddElem( "NAME", user.getName() );
     xml.AddElem( "SURNAME", user.getSurname() );
 
-    xml.Save(nazwaPlikuZUzytkownikami);
+    xml.Save(usersFileName);
 }
 
 vector <User> UsersFile::loadUsersFromFile() {
@@ -27,8 +27,8 @@ vector <User> UsersFile::loadUsersFromFile() {
     vector <User> users;
     User tempUser;
 
-    nazwaPlikuZUzytkownikami = "PlikZUserami.xml"; //TUTAJ TRZEBA POBRAC NAZWE PPLIKu Z GORY
-    bool fileExists = xml.Load( nazwaPlikuZUzytkownikami);
+    usersFileName = "PlikZUserami.xml"; //TUTAJ TRZEBA POBRAC NAZWE PPLIKu Z GORY
+    bool fileExists = xml.Load( usersFileName);
 
     if(!fileExists) {
         cout << "Nie ma uzytkownikow. Zarejestruj sie";
@@ -101,9 +101,9 @@ User UsersFile::pobierzDaneUzytkownika(string daneJednegoUzytkownikaOddzielonePi
 
 void UsersFile::changePasswordInFile(int loggedUserId, string newPassword) {
     CMarkup xml;
-    nazwaPlikuZUzytkownikami = "PlikZUserami.xml";
+    usersFileName = "PlikZUserami.xml";
 
-    bool fileExists = xml.Load( nazwaPlikuZUzytkownikami);
+    bool fileExists = xml.Load( usersFileName);
 
     if(fileExists) {
         xml.FindElem(); //USERSLIST
@@ -122,7 +122,7 @@ void UsersFile::changePasswordInFile(int loggedUserId, string newPassword) {
                 xml.FindElem("PASSWORD");
                 xml.RemoveElem();
                 xml.AddElem("PASSWORD", newPassword);
-                xml.Save( nazwaPlikuZUzytkownikami) ;
+                xml.Save( usersFileName) ;
             }
             else xml.OutOfElem();
 

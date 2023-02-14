@@ -12,13 +12,11 @@ using namespace std;
 
 class UsersFile : public PlikXML{
 
-    const string USERS_FILE_NAME;
-
     User pobierzDaneUzytkownika(string dane);
 
 public:
-    UsersFile(string nazwaPlikuZUzytkownikami) : PlikXML(nazwaPlikuZUzytkownikami) {};
-    string nazwaPlikuZUzytkownikami;
+    UsersFile(string usersFileName) : PlikXML(usersFileName) {};
+    string usersFileName;
     void addUserToFile(User user);
     vector <User> loadUsersFromFile();
     void changePasswordInFile(int loggedUserId, string newPassword);
