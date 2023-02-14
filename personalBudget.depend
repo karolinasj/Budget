@@ -1,0 +1,119 @@
+# depslib dependency file v1.0
+1676385183 source:c:\users\naniko\documents\codeblocks\personalbudget\main.cpp
+	<iostream>
+	"PlikXML.h"
+	"UsersFile.h"
+	"UserMenedzer.h"
+	"User.h"
+	"PersonalBudget.h"
+
+1675803064 source:c:\users\naniko\documents\codeblocks\personalbudget\markup.cpp
+	<stdio.h>
+	"Markup.h"
+	<errno.h>
+	<iconv.h>
+	<windows.h>
+	<mbstring.h>
+
+1675803064 c:\users\naniko\documents\codeblocks\personalbudget\markup.h
+	<stdlib.h>
+	<string.h>
+	<string>
+	<afx.h>
+
+1674603033 source:c:\users\naniko\documents\codeblocks\personalbudget\pliktekstowy.cpp
+	"PlikTekstowy.h"
+
+1674603033 c:\users\naniko\documents\codeblocks\personalbudget\pliktekstowy.h
+	<fstream>
+
+1675282991 source:c:\users\naniko\documents\codeblocks\personalbudget\metodypomocnicze.cpp
+	"MetodyPomocnicze.h"
+
+1676318417 c:\users\naniko\documents\codeblocks\personalbudget\metodypomocnicze.h
+	<fstream>
+	<iostream>
+	<vector>
+	<sstream>
+	<algorithm>
+	"User.h"
+
+1676296794 c:\users\naniko\documents\codeblocks\personalbudget\uzytkownik.h
+	<iostream>
+
+1676296860 source:c:\users\naniko\documents\codeblocks\personalbudget\uzytkownik.cpp
+	"Uzytkownik.h"
+
+1676307598 source:c:\users\naniko\documents\codeblocks\personalbudget\uzytkonikmenedzer.cpp
+	"UzytkonikMenedzer.h"
+
+1676299636 c:\users\naniko\documents\codeblocks\personalbudget\uzytkonikmenedzer.h
+	<iostream>
+	<vector>
+	<fstream>
+	"Uzytkownik.h"
+	"PlikZUzytkownikami.h"
+
+1676310225 c:\users\naniko\documents\codeblocks\personalbudget\plikzuzytkownikami.h
+	<fstream>
+	<iostream>
+	<vector>
+	"Uzytkownik.h"
+	"MetodyPomocnicze.h"
+	"PlikXML.h"
+
+1676307682 c:\users\naniko\documents\codeblocks\personalbudget\plikxml.h
+	<fstream>
+	"Markup.h"
+
+1676297446 source:c:\users\naniko\documents\codeblocks\personalbudget\plikxml.cpp
+	"PlikXML.h"
+
+1676310225 source:c:\users\naniko\documents\codeblocks\personalbudget\plikzuzytkownikami.cpp
+	"PlikZUzytkownikami.h"
+
+1676318337 source:c:\users\naniko\documents\codeblocks\personalbudget\operationmeneger.cpp
+
+1676317284 source:c:\users\naniko\documents\codeblocks\personalbudget\user.cpp
+	"User.h"
+
+1676317284 c:\users\naniko\documents\codeblocks\personalbudget\user.h
+	<iostream>
+
+1676385183 source:c:\users\naniko\documents\codeblocks\personalbudget\personalbudget.cpp
+	"PersonalBudget.h"
+
+1676405528 c:\users\naniko\documents\codeblocks\personalbudget\personalbudget.h
+	<iostream>
+	"UserMenedzer.h"
+	"OperationMeneger.h"
+
+1676407572 c:\users\naniko\documents\codeblocks\personalbudget\usermenedzer.h
+	<iostream>
+	<vector>
+	<fstream>
+	"User.h"
+	"UsersFile.h"
+
+1676408323 c:\users\naniko\documents\codeblocks\personalbudget\usersfile.h
+	<fstream>
+	<iostream>
+	<vector>
+	"User.h"
+	"MetodyPomocnicze.h"
+	"PlikXML.h"
+
+1676318356 c:\users\naniko\documents\codeblocks\personalbudget\operationmeneger.h
+
+1676405528 source:c:\users\naniko\documents\codeblocks\personalbudget\usermenedzer.cpp
+	"UserMenedzer.h"
+
+1676408309 source:c:\users\naniko\documents\codeblocks\personalbudget\usersfile.cpp
+	"UsersFile.h"
+
+1676407021 source:c:\users\naniko\documents\codeblocks\personalbudget\operation.cpp
+	"Operation.h"
+
+1676407036 c:\users\naniko\documents\codeblocks\personalbudget\operation.h
+	"Markup.h"
+
