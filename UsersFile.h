@@ -16,7 +16,7 @@ class UsersFile : public PlikXML{
 
 public:
     UsersFile(string usersFileName) : PlikXML(usersFileName) {};
-    string usersFileName;
+    //string usersFileName;
     void addUserToFile(User user);
     vector <User> loadUsersFromFile();
     void changePasswordInFile(int loggedUserId, string newPassword);

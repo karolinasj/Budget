@@ -25,6 +25,8 @@ bool PersonalBudget::checkIfUserIsLogged(){
 
 void PersonalBudget::logOutUser(){
     userMenedzer.logOutUser();
+    delete operationMeneger;
+    operationMeneger = NULL;
 }
 
 void PersonalBudget::registerUser(){
@@ -32,7 +34,11 @@ void PersonalBudget::registerUser(){
 }
 void PersonalBudget::loginUser(){
     userMenedzer.loginUser();
+    if (userMenedzer.checkIfUserIsLogged()){
+        operationMeneger = new OperationMeneger(NAZWA_PLIKU_Z_INCOMAMI, NAZWA_PLIKU_Z_EXPENSAMI, userMenedzer.getLoggedUserId());
+    }
 }
+
 void PersonalBudget::changePassword(){
     userMenedzer.changeLoggedUserPassword();
 }
@@ -58,9 +64,21 @@ char PersonalBudget::chooseUserMenuOption() {
     return wybor;
 }
 
+void PersonalBudget::addIncome(){
+    operationMeneger->registerNewIncome();
+}
+void PersonalBudget::addExpense(){
+    operationMeneger->registerNewExpense();
+}
+void PersonalBudget::showAll(){
 
-
-
+    operationMeneger-> showAllIncomes();
+    operationMeneger->showAllExpenses();
+}
+void PersonalBudget::sortAndShowInc(){
+    operationMeneger->sortIncomes();
+    //operationMeneger-> showAllIncomes();
+}
 
 
 

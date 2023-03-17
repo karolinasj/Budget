@@ -6,7 +6,11 @@
 #include <vector>
 #include<sstream>
 #include <algorithm>
+#include <string>
 #include "User.h"
+#include <ctime>
+#include <iomanip>
+#include <bits/stdc++.h>
 
 using namespace std;
 
@@ -21,6 +25,12 @@ public:
     static string pobierzLiczbe(string tekst, int pozycjaZnaku);
     static int konwersjaStringNaInt(string liczba);
     static int wczytajLiczbeCalkowita();
+    static string doubleToString(double number);
+    static double pobierzDouble();
+    static bool checkDate(string dateWithDashes);
+    //static string getDate();
+    static vector <string> splitStringByDash(string str);
+    static string getCurrentDate();
 
 };
 #endif

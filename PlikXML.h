@@ -7,7 +7,7 @@
 using namespace std;
 
 class PlikXML {
-
+protected:
     const string FILE_NAME;
 
 public:

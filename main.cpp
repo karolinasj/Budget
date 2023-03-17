@@ -4,13 +4,13 @@
 #include "UserMenedzer.h"
 #include "User.h"
 #include "PersonalBudget.h"
+#include "OperationMeneger.h"
 
 using namespace std;
 
-int main()
-{
+int main() {
     char wybor;
-    PersonalBudget personalBudget("users_v01.xml");
+    PersonalBudget personalBudget("users_v01.xml", "incomes_v01.xml", "expenses_v01.xml");
     while (true) {
         if (personalBudget.checkIfUserIsLogged() == false) {
             wybor = personalBudget.chooseMainMenuOption();
@@ -35,23 +35,37 @@ int main()
 
             switch (wybor) {
             case '1':
+                personalBudget.addIncome();
                 //ksiazkaAdresowa.dodajAdresata();
+                //Dodaj przychod
                 break;
             case '2':
-                //ksiazkaAdresowa.wyszukajAdresatowPoImieniu();
+                personalBudget.addExpense();
+                //Dodaj wydatek
                 break;
             case '3':
                 //ksiazkaAdresowa.wyszukajAdresatowPoNazwisku();
+                //Bilans z biezacego miesiaca
                 break;
             case '4':
                 //ksiazkaAdresowa.wyswietlWszystkichAdresatow();
+                //Bilans z poprzedniego miesiaca
                 break;
             case '5':
                 //ksiazkaAdresowa.usunAdresata();
+                //Bilans z wybranego okresu
                 break;
             case '6':
                 //ksiazkaAdresowa.edytujAdresata();
 
+                break;
+            case 'a':
+                personalBudget.showAll();
+                system("pause");
+                break;
+            case 's':
+                personalBudget.sortAndShowInc();
+                system("pause");
                 break;
             case '8':
                 personalBudget.changePassword();
@@ -59,24 +73,16 @@ int main()
             case '9':
                 personalBudget.logOutUser();
                 break;
-           }
+            }
         }
     }
-
-
 
     cout << "Hello world!" << endl;
     return 0;
 }
 
-
 /*int main()
 {
-    UsersFile plik("PlikZUserami.xml");
-    plik.changePasswordInFile(2, "noweH1111aslo");
-
-
-
 
 return 0;
 }*/

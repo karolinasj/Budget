@@ -2,8 +2,8 @@
 
 void UsersFile::addUserToFile(User user) {
     CMarkup xml;
-    usersFileName = "PlikZUserami.xml";
-    bool fileExists = xml.Load( usersFileName );
+    //usersFileName = "PlikZUserami.xml";
+    bool fileExists = xml.Load( FILE_NAME );
 
     if(!fileExists) {
         xml.AddElem( "USERSLIST" );
@@ -19,7 +19,7 @@ void UsersFile::addUserToFile(User user) {
     xml.AddElem( "NAME", user.getName() );
     xml.AddElem( "SURNAME", user.getSurname() );
 
-    xml.Save(usersFileName);
+    xml.Save(FILE_NAME);
 }
 
 vector <User> UsersFile::loadUsersFromFile() {
@@ -27,8 +27,8 @@ vector <User> UsersFile::loadUsersFromFile() {
     vector <User> users;
     User tempUser;
 
-    usersFileName = "PlikZUserami.xml"; //TUTAJ TRZEBA POBRAC NAZWE PPLIKu Z GORY
-    bool fileExists = xml.Load( usersFileName);
+    //usersFileName = "PlikZUserami.xml"; //TUTAJ TRZEBA POBRAC NAZWE PPLIKu Z GORY
+    bool fileExists = xml.Load( FILE_NAME);
 
     if(!fileExists) {
         cout << "Nie ma uzytkownikow. Zarejestruj sie";
@@ -72,7 +72,7 @@ vector <User> UsersFile::loadUsersFromFile() {
     }
     return users;
 }
-User UsersFile::pobierzDaneUzytkownika(string daneJednegoUzytkownikaOddzielonePionowymiKreskami) {
+/*User UsersFile::pobierzDaneUzytkownika(string daneJednegoUzytkownikaOddzielonePionowymiKreskami) {
     User uzytkownik;
     string pojedynczaDanaUzytkownika = "";
     int numerPojedynczejDanejUzytkownika = 1;
@@ -97,13 +97,13 @@ User UsersFile::pobierzDaneUzytkownika(string daneJednegoUzytkownikaOddzielonePi
         }
     }
     return uzytkownik;
-}
+}*/
 
 void UsersFile::changePasswordInFile(int loggedUserId, string newPassword) {
     CMarkup xml;
-    usersFileName = "PlikZUserami.xml";
+    //usersFileName = "PlikZUserami.xml";
 
-    bool fileExists = xml.Load( usersFileName);
+    bool fileExists = xml.Load( FILE_NAME);
 
     if(fileExists) {
         xml.FindElem(); //USERSLIST
@@ -122,12 +122,12 @@ void UsersFile::changePasswordInFile(int loggedUserId, string newPassword) {
                 xml.FindElem("PASSWORD");
                 xml.RemoveElem();
                 xml.AddElem("PASSWORD", newPassword);
-                xml.Save( usersFileName) ;
+                xml.Save( FILE_NAME) ;
             }
             else xml.OutOfElem();
 
         }
     }
-xml.Save( "PlikZUserami.xml") ;
+xml.Save( FILE_NAME ) ; // sprawdzic czy ten save jest potrzebny
 
 }

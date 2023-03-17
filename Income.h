@@ -1,18 +1,18 @@
-#ifndef OPERATION_H
-#define OPERATION_H
+#ifndef INCOME_H
+#define INCOME_H
 
-#include "Markup.h"
+#include "Operation.h"
 
 using namespace std;
 
-class Operation {
-protected:
+class Income : public Operation{
+    /*protected:
     int operationId, userId;
     string date, item;
     double amount;
 public:
     int getOperationId();
-    int getuUserId();
+    int getUserId();
     double getAmount();
     string getDate();
     string getItem();
@@ -21,7 +21,7 @@ public:
     void setUserId(int newUserId);
     void setDate(string newDate);
     void setItem(string newItem);
-    void setAmount(double newAmount);
-
+    void setAmount(double newAmount);*/
 };
+
 #endif

@@ -11,9 +11,17 @@ using namespace std;
 class PersonalBudget {
 
     UserMenedzer userMenedzer;
-//OperationMeneger operationMeneger;
+    OperationMeneger *operationMeneger;
+    const string NAZWA_PLIKU_Z_INCOMAMI;
+    const string NAZWA_PLIKU_Z_EXPENSAMI;
 public:
-    PersonalBudget(string usersFileName) : userMenedzer(usersFileName){};
+    PersonalBudget(string usersFileName, string nazwaPlikuZIncomami, string nazwaPlikuZExpensami) : userMenedzer(usersFileName), NAZWA_PLIKU_Z_INCOMAMI(nazwaPlikuZIncomami) , NAZWA_PLIKU_Z_EXPENSAMI(nazwaPlikuZExpensami) {
+        operationMeneger = NULL;
+    };
+    ~PersonalBudget() {
+        delete operationMeneger;
+        operationMeneger = NULL;
+    };
     char chooseMainMenuOption();
     char chooseUserMenuOption();
     bool checkIfUserIsLogged();
@@ -21,17 +29,15 @@ public:
     void registerUser();
     void loginUser();
     void changePassword();
+
+    void addIncome();
+    void addExpense();
+    void showAll();
+    void sortAndShowInc();
 };
 
 #endif
 
 /*
-- userMenedzer : UserMenedzer
-- incomeMenedzer : IncomeMenedzer
-- expensesMenedzer : ExpensesMenedzer
 --
-+ PersonalBudget()
-
-+ addIncome() : void
-+ addExpense() : void
 + showBalance() : void*/

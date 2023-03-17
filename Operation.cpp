@@ -3,6 +3,9 @@
 int Operation::getuUserId() {
     return userId;
 }
+int Operation::getOperationId() {
+    return operationId;
+}
 double Operation::getAmount() {
     return amount;
 }
