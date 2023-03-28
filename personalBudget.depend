@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1679046462 source:c:\users\naniko\documents\codeblocks\personalbudget\main.cpp
+1680011076 source:c:\users\naniko\documents\codeblocks\personalbudget\main.cpp
 	<iostream>
 	"PlikXML.h"
 	"UsersFile.h"
@@ -8,7 +8,7 @@
 	"PersonalBudget.h"
 	"OperationMeneger.h"
 
-1675803064 source:c:\users\naniko\documents\codeblocks\personalbudget\markup.cpp
+1675806664 source:c:\users\naniko\documents\codeblocks\personalbudget\markup.cpp
 	<stdio.h>
 	"Markup.h"
 	<errno.h>
@@ -16,7 +16,7 @@
 	<windows.h>
 	<mbstring.h>
 
-1675803064 c:\users\naniko\documents\codeblocks\personalbudget\markup.h
+1675806664 c:\users\naniko\documents\codeblocks\personalbudget\markup.h
 	<stdlib.h>
 	<string.h>
 	<string>
@@ -28,10 +28,10 @@
 1674603033 c:\users\naniko\documents\codeblocks\personalbudget\pliktekstowy.h
 	<fstream>
 
-1678918700 source:c:\users\naniko\documents\codeblocks\personalbudget\metodypomocnicze.cpp
+1679999633 source:c:\users\naniko\documents\codeblocks\personalbudget\metodypomocnicze.cpp
 	"MetodyPomocnicze.h"
 
-1678918408 c:\users\naniko\documents\codeblocks\personalbudget\metodypomocnicze.h
+1679676812 c:\users\naniko\documents\codeblocks\personalbudget\metodypomocnicze.h
 	<fstream>
 	<iostream>
 	<vector>
@@ -67,41 +67,41 @@
 	"MetodyPomocnicze.h"
 	"PlikXML.h"
 
-1676465518 c:\users\naniko\documents\codeblocks\personalbudget\plikxml.h
+1676469118 c:\users\naniko\documents\codeblocks\personalbudget\plikxml.h
 	<fstream>
 	"Markup.h"
 
-1676297446 source:c:\users\naniko\documents\codeblocks\personalbudget\plikxml.cpp
+1676301046 source:c:\users\naniko\documents\codeblocks\personalbudget\plikxml.cpp
 	"PlikXML.h"
 
 1676310225 source:c:\users\naniko\documents\codeblocks\personalbudget\plikzuzytkownikami.cpp
 	"PlikZUzytkownikami.h"
 
-1679064497 source:c:\users\naniko\documents\codeblocks\personalbudget\operationmeneger.cpp
+1680000290 source:c:\users\naniko\documents\codeblocks\personalbudget\operationmeneger.cpp
 	"OperationMeneger.h"
 
-1676317284 source:c:\users\naniko\documents\codeblocks\personalbudget\user.cpp
+1676320884 source:c:\users\naniko\documents\codeblocks\personalbudget\user.cpp
 	"User.h"
 
-1676317284 c:\users\naniko\documents\codeblocks\personalbudget\user.h
+1676320884 c:\users\naniko\documents\codeblocks\personalbudget\user.h
 	<iostream>
 
-1679064306 source:c:\users\naniko\documents\codeblocks\personalbudget\personalbudget.cpp
+1679997382 source:c:\users\naniko\documents\codeblocks\personalbudget\personalbudget.cpp
 	"PersonalBudget.h"
 
-1679046462 c:\users\naniko\documents\codeblocks\personalbudget\personalbudget.h
+1680011076 c:\users\naniko\documents\codeblocks\personalbudget\personalbudget.h
 	<iostream>
 	"UserMenedzer.h"
 	"OperationMeneger.h"
 
-1678794125 c:\users\naniko\documents\codeblocks\personalbudget\usermenedzer.h
+1680011076 c:\users\naniko\documents\codeblocks\personalbudget\usermenedzer.h
 	<iostream>
 	<vector>
 	<fstream>
 	"User.h"
 	"UsersFile.h"
 
-1676465518 c:\users\naniko\documents\codeblocks\personalbudget\usersfile.h
+1676469118 c:\users\naniko\documents\codeblocks\personalbudget\usersfile.h
 	<fstream>
 	<iostream>
 	<vector>
@@ -109,7 +109,7 @@
 	"MetodyPomocnicze.h"
 	"PlikXML.h"
 
-1679065581 c:\users\naniko\documents\codeblocks\personalbudget\operationmeneger.h
+1680011076 c:\users\naniko\documents\codeblocks\personalbudget\operationmeneger.h
 	<iostream>
 	<vector>
 	<fstream>
@@ -118,36 +118,37 @@
 	"IncomesFile.h"
 	"ExpensesFile.h"
 
-1676405528 source:c:\users\naniko\documents\codeblocks\personalbudget\usermenedzer.cpp
+1679992894 source:c:\users\naniko\documents\codeblocks\personalbudget\usermenedzer.cpp
 	"UserMenedzer.h"
 
-1676556639 source:c:\users\naniko\documents\codeblocks\personalbudget\usersfile.cpp
+1676560239 source:c:\users\naniko\documents\codeblocks\personalbudget\usersfile.cpp
 	"UsersFile.h"
 
-1676478691 source:c:\users\naniko\documents\codeblocks\personalbudget\operation.cpp
+1679676492 source:c:\users\naniko\documents\codeblocks\personalbudget\operation.cpp
 	"Operation.h"
 
-1676476112 c:\users\naniko\documents\codeblocks\personalbudget\operation.h
+1679608235 c:\users\naniko\documents\codeblocks\personalbudget\operation.h
 	"Markup.h"
+	<vector>
 
-1678191706 c:\users\naniko\documents\codeblocks\personalbudget\income.h
+1678195306 c:\users\naniko\documents\codeblocks\personalbudget\income.h
 	"Operation.h"
 
-1676476112 c:\users\naniko\documents\codeblocks\personalbudget\expense.h
+1676479712 c:\users\naniko\documents\codeblocks\personalbudget\expense.h
 	"Operation.h"
 
-1676410330 source:c:\users\naniko\documents\codeblocks\personalbudget\expense.cpp
+1676413930 source:c:\users\naniko\documents\codeblocks\personalbudget\expense.cpp
 
-1678191699 source:c:\users\naniko\documents\codeblocks\personalbudget\income.cpp
+1678195299 source:c:\users\naniko\documents\codeblocks\personalbudget\income.cpp
 	"Income.h"
 
-1679059338 source:c:\users\naniko\documents\codeblocks\personalbudget\expensesfile.cpp
+1679676492 source:c:\users\naniko\documents\codeblocks\personalbudget\expensesfile.cpp
 	"ExpensesFile.h"
 
-1679063980 source:c:\users\naniko\documents\codeblocks\personalbudget\incomesfile.cpp
+1679675028 source:c:\users\naniko\documents\codeblocks\personalbudget\incomesfile.cpp
 	"IncomesFile.h"
 
-1679049873 c:\users\naniko\documents\codeblocks\personalbudget\incomesfile.h
+1679675028 c:\users\naniko\documents\codeblocks\personalbudget\incomesfile.h
 	<fstream>
 	<iostream>
 	<vector>
@@ -156,7 +157,7 @@
 	"MetodyPomocnicze.h"
 	"PlikXML.h"
 
-1679059338 c:\users\naniko\documents\codeblocks\personalbudget\expensesfile.h
+1679675028 c:\users\naniko\documents\codeblocks\personalbudget\expensesfile.h
 	<fstream>
 	<iostream>
 	<vector>

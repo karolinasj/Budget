@@ -15,7 +15,6 @@ string Operation::getDate() {
 string Operation::getItem() {
     return item;
 }
-
 void Operation::setOperationId(int newOperationId) {
     operationId = newOperationId;
 }

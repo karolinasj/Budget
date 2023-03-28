@@ -28,9 +28,9 @@ public:
     static string doubleToString(double number);
     static double pobierzDouble();
     static bool checkDate(string dateWithDashes);
-    //static string getDate();
     static vector <string> splitStringByDash(string str);
     static string getCurrentDate();
+    static vector <int> findPreviousMonth(string dateWithDashes);
 
 };
 #endif

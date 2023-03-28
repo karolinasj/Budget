@@ -2,6 +2,7 @@
 #define OPERATION_H
 
 #include "Markup.h"
+#include <vector>
 
 using namespace std;
 

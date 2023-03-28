@@ -33,11 +33,10 @@ public:
     void addIncome();
     void addExpense();
     void showAll();
-    void sortAndShowInc();
+
+    void monthlyBilans();
+    void previousMonthBilans();
+    void choosenBilans();
 };
 
 #endif
-
-/*
---
-+ showBalance() : void*/

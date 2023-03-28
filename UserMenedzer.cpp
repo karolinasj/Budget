@@ -23,11 +23,11 @@ User UserMenedzer::getNewUserData() {
     cout << "Podaj haslo: ";
     user.setPassword(MetodyPomocnicze::wczytajLinie());
 
-    /*cout << "Podaj imie: ";
+    cout << "Podaj imie: ";
     user.setName(MetodyPomocnicze::wczytajLinie());
 
     cout << "Podaj nazwisko: ";
-    user.setSurname(MetodyPomocnicze::wczytajLinie());*/
+    user.setSurname(MetodyPomocnicze::wczytajLinie());
 
     return user;
 }

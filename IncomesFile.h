@@ -19,12 +19,11 @@ class IncomesFile : public PlikXML{
 
 public:
     IncomesFile(string incomesFileName) : PlikXML(incomesFileName) {
-    //lastIncomeID = loadIncomesFromFile();
     };
 
     void addIncomeToFile(Income income);
     vector <Income> loadUresrsIncomes(int userId);
-    vector <Income> loadDataFromFile(int usersId);
+    vector <Income> loadIncomesFromFile(int usersId);
     int getLastIncomeID();
 
 };

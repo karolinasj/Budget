@@ -24,60 +24,6 @@ void ExpensesFile::addExpenseToFile(Expense expense) {
     xml.Save(FILE_NAME);
 }
 
-/*int ExpensesFile::loadExpensesFromFile() {
-    CMarkup xml;
-    vector <Expense> expenses;
-    Expense tempExpense;
-
-    bool fileExists = xml.Load( FILE_NAME);
-
-    if(!fileExists) {
-        lastExpenseID = 0;
-        return lastExpenseID;
-    }
-    xml.FindElem(); //EXPENSES
-    xml.IntoElem();
-    while(xml.FindElem("EXPENSE")) {
-        xml.IntoElem();
-
-        xml.FindElem("EXPENSE_ID");
-        string strID = "";
-        int id = 0;
-        strID = xml.GetData();
-        id = MetodyPomocnicze::konwersjaStringNaInt(strID);
-        tempExpense.setOperationId(id);
-        lastExpenseID = id;
-
-        xml.FindElem("USER_ID");
-        string strUID = "";
-        int uid = 0;
-        strUID = xml.GetData();
-        uid = MetodyPomocnicze::konwersjaStringNaInt(strUID);
-        tempExpense.setUserId(uid);
-
-        xml.FindElem("DATE");
-        string date = "";
-        date = xml.GetData();
-        tempExpense.setDate(date);
-
-        xml.FindElem("ITEM");
-        string item = "";
-        item = xml.GetData();
-        tempExpense.setItem(item);
-
-        xml.FindElem("AMOUNT");
-        string strAmount = "";
-        strAmount = xml.GetData();
-        double amount;
-        amount = stod(strAmount);
-        tempExpense.setAmount(amount);
-
-        expenses.push_back(tempExpense);
-        xml.OutOfElem();
-
-    }
-    return lastExpenseID;
-}*/
 vector <Expense> ExpensesFile::loadExpensesFromFile(int usersId) {
     CMarkup xml;
 
@@ -98,9 +44,11 @@ vector <Expense> ExpensesFile::loadExpensesFromFile(int usersId) {
 
         xml.FindElem("EXPENSE_ID");
         string strID = "";
+
         int id = 0;
         strID = xml.GetData();
         id = MetodyPomocnicze::konwersjaStringNaInt(strID);
+
         tempExpense.setOperationId(id);
         lastExpenseID = id;
 
@@ -128,7 +76,7 @@ vector <Expense> ExpensesFile::loadExpensesFromFile(int usersId) {
         amount = stod(strAmount);
         tempExpense.setAmount(amount);
 
-        if (uid == usersId){
+        if (uid == usersId) {
             expenses.push_back(tempExpense);
         }
 

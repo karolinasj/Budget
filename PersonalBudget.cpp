@@ -2,6 +2,7 @@
 
 char PersonalBudget::chooseMainMenuOption() {
     char wybor;
+    cin.clear();
 
     system("cls");
     cout << "    >>> MENU  GLOWNE <<<" << endl;
@@ -44,6 +45,7 @@ void PersonalBudget::changePassword(){
 }
 
 char PersonalBudget::chooseUserMenuOption() {
+    cin.clear();
     char wybor;
 
     system("cls");
@@ -75,10 +77,16 @@ void PersonalBudget::showAll(){
     operationMeneger-> showAllIncomes();
     operationMeneger->showAllExpenses();
 }
-void PersonalBudget::sortAndShowInc(){
-    operationMeneger->sortIncomes();
-    //operationMeneger-> showAllIncomes();
+void PersonalBudget::monthlyBilans(){
+
+    operationMeneger->showBilansCurrentMonth();
 }
+void PersonalBudget::previousMonthBilans(){
 
+    operationMeneger->showBilansLastMonth();
+}
+void PersonalBudget::choosenBilans(){
 
+    operationMeneger->showBilansPeriod();
+}
 

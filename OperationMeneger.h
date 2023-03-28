@@ -26,27 +26,29 @@ class OperationMeneger {
     void showIncomes(vector <Income> toShow);
     void showExpenses(vector <Expense> toShow);
 
-public:
-OperationMeneger(string fileWithIncomesName, string fileWithExpensesName, int loggedUserId)
-    : fileWithIncomes(fileWithIncomesName), fileWithExpenses(fileWithExpensesName), ID_ZALOGOWANEGO_UZYTKOWNIKA(loggedUserId){
+    vector <Income> findIncomesFromPeriod(int dateStart, int dateEnd);
+    vector <Expense> findExpensesFromPeriod(int dateStart, int dateEnd);
 
-    //incomes = fileWithIncomes.loadUresrsIncomes(loggedUserId);
-    incomes = fileWithIncomes.loadDataFromFile(loggedUserId);
-    expenses = fileWithExpenses.loadUresrsExpenses(loggedUserId);
-};
-struct sortByDate
-{
-    inline bool operator() (Income& firstDate, Income& secondDate)
-    {
-        return (firstDate.getDate() > secondDate.getDate());
-    }
-};
-    void loadUsersIncomesFromFile();
-    vector <Income> findIncomesFromPeriod();
     string returnDateWithoutDashes(string dateWithDashes);
 
-    bool compareIncome(Income i1, Income i2);
-    vector <Income> sortIncomes();
+    struct sortByDate {
+        inline bool operator() (Operation& firstDate, Operation& secondDate) {
+            return (firstDate.getDate() < secondDate.getDate());
+        }
+    };
+
+public:
+    OperationMeneger(string fileWithIncomesName, string fileWithExpensesName, int loggedUserId)
+        : fileWithIncomes(fileWithIncomesName), fileWithExpenses(fileWithExpensesName), ID_ZALOGOWANEGO_UZYTKOWNIKA(loggedUserId) {
+
+        incomes = fileWithIncomes.loadIncomesFromFile(loggedUserId);
+        expenses = fileWithExpenses.loadExpensesFromFile(loggedUserId);
+    };
+
+
+
+    vector <Income> sortIncomes(vector <Income> incomeToSort);
+    vector <Expense> sortExpenses(vector <Expense> expensesToSort);
 
 
     void registerNewIncome();
@@ -54,6 +56,10 @@ struct sortByDate
 
     void showAllIncomes();
     void showAllExpenses();
+
+    void showBilansPeriod();
+    void showBilansCurrentMonth();
+    void showBilansLastMonth();
 
 
 };

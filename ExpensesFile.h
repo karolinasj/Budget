@@ -15,11 +15,9 @@ class ExpensesFile : public PlikXML{
 
     Expense getExpenseData(string dane);
     int lastExpenseID;
-    //int loadExpensesFromFile();
 
 public:
     ExpensesFile(string expensesFileName) : PlikXML(expensesFileName) {
-    //lastExpenseID = loadExpensesFromFile();
     };
 
     void addExpenseToFile(Expense expense);

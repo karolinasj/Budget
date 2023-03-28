@@ -19,7 +19,7 @@ class UserMenedzer {
 
 public:
     UserMenedzer(string usersFileName) : plikZUzytkownikami(usersFileName) {
-        loggedUserId = 0; //TU 0!!!
+        loggedUserId = 0;
         users = plikZUzytkownikami.loadUsersFromFile();
     };
     void registerNewUser();

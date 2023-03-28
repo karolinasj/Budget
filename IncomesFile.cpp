@@ -22,62 +22,8 @@ void IncomesFile::addIncomeToFile(Income income) {
 
     xml.Save(FILE_NAME);
 }
-/*int IncomesFile::loadIncomesFromFile() {
-    CMarkup xml;
-    vector <Income> incomes;
-    Income tempIncome;
 
-    bool fileExists = xml.Load( FILE_NAME);
-
-    if(!fileExists) {
-        lastIncomeID = 0;
-        return lastIncomeID;
-    }
-    xml.FindElem(); //INCOMES
-    xml.IntoElem();
-
-    while(xml.FindElem("INCOME")) {
-
-        xml.IntoElem();
-
-        xml.FindElem("INCOME_ID");
-        string strID = "";
-        int id = 0;
-        strID = xml.GetData();
-        id = MetodyPomocnicze::konwersjaStringNaInt(strID);
-        tempIncome.setOperationId(id);
-        lastIncomeID = id;
-
-        xml.FindElem("USER_ID");
-        string strUID = "";
-        int uid = 0;
-        strUID = xml.GetData();
-        uid = MetodyPomocnicze::konwersjaStringNaInt(strUID);
-        tempIncome.setUserId(uid);
-
-        xml.FindElem("DATE");
-        string date = "";
-        date = xml.GetData();
-        tempIncome.setDate(date);
-
-        xml.FindElem("ITEM");
-        string item = "";
-        item = xml.GetData();
-        tempIncome.setItem(item);
-
-        xml.FindElem("AMOUNT");
-        string strAmount = "";
-        strAmount = xml.GetData();
-        double amount;
-        amount = stod(strAmount);
-        tempIncome.setAmount(amount);
-
-        incomes.push_back(tempIncome);
-        xml.OutOfElem();
-    }
-    return lastIncomeID;
-}*/
-vector <Income> IncomesFile::loadDataFromFile(int usersId) {
+vector <Income> IncomesFile::loadIncomesFromFile(int usersId) {
     CMarkup xml;
     vector <Income> incomes;
     Income tempIncome;

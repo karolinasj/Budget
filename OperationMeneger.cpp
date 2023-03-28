@@ -30,7 +30,7 @@ Income OperationMeneger::getNewIncomeData() {
             if(MetodyPomocnicze::checkDate(date)) {
                 income.setDate(date);
             } else {
-                cout << "Prosze podac date po roku 2000 w formacie rrrr-mm-dd: ";//cout << "Nieprawidlowa data, prosze podac poprawna";
+                cout << "Poprawna data: ";
                 date = "";
             };
         } while(date =="");
@@ -45,29 +45,11 @@ Income OperationMeneger::getNewIncomeData() {
 }
 
 void OperationMeneger::showAllIncomes() {
-cout << "INCOMES: "<<endl;
-/*    for(size_t i=0; i <incomes.size(); i++) {
-
-        cout << "ID operacji " << incomes[i].getOperationId()<<endl;
-        // cout << incomes[i].getUserId()<<endl;
-        cout << "Kwota " << incomes[i].getAmount()<<endl;
-        cout << "Data " << incomes[i].getDate()<<endl;
-        cout << "Opis " << incomes[i].getItem()<<endl<<endl;
-    }
-*/
-showIncomes(incomes);
+    showIncomes(incomes);
 }
 
 void OperationMeneger::showAllExpenses() {
-cout << "EXPENSES: "<<endl;
-    for(size_t i=0; i <expenses.size(); i++) {
-
-        cout << "ID operacji " << expenses[i].getOperationId()<<endl;
-        // cout << expenses[i].getUserId()<<endl;
-        cout << "Kwota " << expenses[i].getAmount()<<endl;
-        cout << "Data " << expenses[i].getDate()<<endl;
-        cout << "Opis " << expenses[i].getItem()<<endl<<endl;
-    }
+    showExpenses(expenses);
 }
 void OperationMeneger::registerNewExpense() {
     Expense expense = getNewExpenseData();
@@ -99,7 +81,7 @@ Expense OperationMeneger::getNewExpenseData() {
             if(MetodyPomocnicze::checkDate(date)) {
                 expense.setDate(date);
             } else {
-                cout << "Prosze podac date po roku 2000 w formacie rrrr-mm-dd: ";//cout << "Nieprawidlowa data, prosze podac poprawna";
+                cout << "Poprawna data: ";
                 date = "";
             };
         } while(date =="");
@@ -118,20 +100,9 @@ string OperationMeneger::returnDateWithoutDashes(string dateWithDashes) {
     dataWithoutDashes = dateWithDashes.erase(6, 1);
     return dateWithDashes;
 }
-vector <Income> OperationMeneger::findIncomesFromPeriod() {
+vector <Income> OperationMeneger::findIncomesFromPeriod(int dateStart, int dateEnd) {
 
-    string dateStart, dateEnd;
-    int dateAsIntStart, dateAsIntEnd;
     vector <Income> doBilansu;
-
-    cout << "Podaj date poczatkowa: ";
-    cin >> dateStart;
-    cout << "Podaj date koncowa: ";
-    cin >> dateEnd;
-
-    dateAsIntStart = MetodyPomocnicze::konwersjaStringNaInt(returnDateWithoutDashes(dateStart));
-    dateAsIntEnd = MetodyPomocnicze::konwersjaStringNaInt(returnDateWithoutDashes(dateEnd));
-
     int vectorSize = incomes.size();
     for(int i=0; i<vectorSize ; i++) {
         int checkingDate;
@@ -139,58 +110,148 @@ vector <Income> OperationMeneger::findIncomesFromPeriod() {
         checkingDateStr = incomes[i].getDate();
         checkingDate = MetodyPomocnicze::konwersjaStringNaInt(returnDateWithoutDashes(checkingDateStr));
 
-        if(checkingDate >= dateAsIntStart && checkingDate <= dateAsIntEnd) {
+        if(checkingDate >= dateStart && checkingDate <= dateEnd) {
             doBilansu.push_back(incomes[i]);
         }
     }
     return doBilansu;
 }
+vector <Expense> OperationMeneger::findExpensesFromPeriod(int dateStart, int dateEnd) {
 
-bool OperationMeneger::compareIncome(Income i1, Income i2) {
-    int dateAsInt1, dateAsInt2;
-    dateAsInt1 = MetodyPomocnicze::konwersjaStringNaInt(returnDateWithoutDashes(i1.getDate()));
-    //cout << i1.date << ", " << dateAsInt1;
-    dateAsInt2 = MetodyPomocnicze::konwersjaStringNaInt(returnDateWithoutDashes(i2.getDate()));
-    //cout <<endl <<i2.date<< ", " << dateAsInt2;
-    //system("pause");
-    if (dateAsInt1<dateAsInt2) {
-        return (0);
-    } else {
-        return (1);
+    vector <Expense> doBilansu;
+    int vectorSize = expenses.size();
+    for(int i=0; i<vectorSize ; i++) {
+        int checkingDate;
+        string checkingDateStr;
+        checkingDateStr = expenses[i].getDate();
+        checkingDate = MetodyPomocnicze::konwersjaStringNaInt(returnDateWithoutDashes(checkingDateStr));
+
+        if(checkingDate >= dateStart && checkingDate <= dateEnd) {
+            doBilansu.push_back(expenses[i]);
+        }
     }
+    return doBilansu;
 }
 
-vector <Income> OperationMeneger::sortIncomes(){
-    sort(incomes.begin(), incomes.end(), sortByDate());
-    vector <Income> incomeToSort;
-    incomeToSort = findIncomesFromPeriod();
-    //sort(incomeToSort.begin(), incomeToSort.end(), sortByDate());
-    showIncomes(incomeToSort);
+vector <Income> OperationMeneger::sortIncomes(vector <Income> incomeToSort) {
+    sort(incomeToSort.begin(), incomeToSort.end(), sortByDate());
     return incomeToSort;
+}
+vector <Expense> OperationMeneger::sortExpenses(vector <Expense> expensesToSort) {
+    sort(expensesToSort.begin(), expensesToSort.end(), sortByDate());
 
+    return expensesToSort;
 }
 void OperationMeneger::showIncomes(vector <Income> toShow) {
-//cout << "INCOMES: "<<endl;
+    cout << "INCOMES: "<<endl;
     for(size_t i=0; i <toShow.size(); i++) {
-
-        cout << "ID operacji " << toShow[i].getOperationId()<<endl;
-        // cout << incomes[i].getUserId()<<endl;
-        cout << "Kwota " << toShow[i].getAmount()<<endl;
-        cout << "Data " << toShow[i].getDate()<<endl;
-        cout << "Opis " << toShow[i].getItem()<<endl<<endl;
+        cout << "ID operacji: " << toShow[i].getOperationId()<<" || Data: " << toShow[i].getDate()<<" || Kwota: " << toShow[i].getAmount()<<" || Opis: " << toShow[i].getItem()<<endl;
     }
 }
 void OperationMeneger::showExpenses(vector <Expense> toShow) {
-//cout << "INCOMES: "<<endl;
+    cout << "EXPENSES: "<<endl;
     for(size_t i=0; i <toShow.size(); i++) {
 
-        cout << "ID operacji " << toShow[i].getOperationId()<<endl;
+        cout << "ID operacji: " << toShow[i].getOperationId()<<" || Data: " << toShow[i].getDate()<<" || Kwota: " << toShow[i].getAmount()<<" || Opis: " << toShow[i].getItem()<<endl;
         // cout << incomes[i].getUserId()<<endl;
-        cout << "Kwota " << toShow[i].getAmount()<<endl;
-        cout << "Data " << toShow[i].getDate()<<endl;
-        cout << "Opis " << toShow[i].getItem()<<endl<<endl;
     }
 }
 
+void OperationMeneger::showBilansPeriod() {
 
+    string dateStart, dateEnd;
+    int dateAsIntStart, dateAsIntEnd;
 
+    do {
+        cout << "Podaj date poczatkowa: ";
+        dateStart = MetodyPomocnicze::wczytajLinie();
+    } while(!MetodyPomocnicze::checkDate(dateStart));
+    do {
+        cout << "Podaj date koncowa: ";
+        dateEnd = MetodyPomocnicze::wczytajLinie();
+    } while(!MetodyPomocnicze::checkDate(dateEnd));
+
+    dateAsIntStart = MetodyPomocnicze::konwersjaStringNaInt(returnDateWithoutDashes(dateStart));
+    dateAsIntEnd = MetodyPomocnicze::konwersjaStringNaInt(returnDateWithoutDashes(dateEnd));
+
+    vector <Income> incomesForBilans = findIncomesFromPeriod(dateAsIntStart, dateAsIntEnd);
+    vector <Expense> expensesForBilans = findExpensesFromPeriod(dateAsIntStart, dateAsIntEnd);
+    incomesForBilans = sortIncomes(incomesForBilans);
+    expensesForBilans = sortExpenses(expensesForBilans);
+    double incomesSum = 0.0, expensesSum = 0.0;
+    double bilans = 0.0;
+    for(size_t i = 0; i<incomesForBilans.size() ; i++) {
+        incomesSum+=incomesForBilans[i].getAmount();
+    }
+
+    for(size_t i = 0; i<expensesForBilans.size() ; i++) {
+        expensesSum+=expensesForBilans[i].getAmount();
+    }
+    bilans = incomesSum - expensesSum;
+
+    showIncomes(incomesForBilans);
+    showExpenses(expensesForBilans);
+
+    cout <<  "__________________________________"<<endl;
+    cout<< "Suma wydatkow: " << expensesSum << " Suma przychodow: " << incomesSum << " Bilans: "<<bilans<<endl;
+    system("pause");
+}
+
+void OperationMeneger::showBilansCurrentMonth() {
+    string currentDate = MetodyPomocnicze::getCurrentDate();
+    vector <string> currentDateSeparated = MetodyPomocnicze::splitStringByDash(currentDate);
+    string firstDay = currentDateSeparated[0]+"-"+currentDateSeparated[1]+"-"+"01";
+    int dateAsIntStart = MetodyPomocnicze::konwersjaStringNaInt(returnDateWithoutDashes(firstDay));
+    int dateAsIntEnd = MetodyPomocnicze::konwersjaStringNaInt(returnDateWithoutDashes(currentDate));
+
+    vector <Income> incomesForBilans = findIncomesFromPeriod(dateAsIntStart, dateAsIntEnd);
+    vector <Expense> expensesForBilans = findExpensesFromPeriod(dateAsIntStart, dateAsIntEnd);
+    incomesForBilans = sortIncomes(incomesForBilans);
+    expensesForBilans = sortExpenses(expensesForBilans);
+    double incomesSum = 0.0, expensesSum = 0.0;
+    double bilans = 0.0;
+    for(size_t i = 0; i<incomesForBilans.size() ; i++) {
+        incomesSum+=incomesForBilans[i].getAmount();
+    }
+
+    for(size_t i = 0; i<expensesForBilans.size() ; i++) {
+        expensesSum+=expensesForBilans[i].getAmount();
+    }
+    bilans = incomesSum - expensesSum;
+
+    showIncomes(incomesForBilans);
+    showExpenses(expensesForBilans);
+
+    cout <<  "__________________________________"<<endl;
+    cout<< "Suma wydatkow: " << expensesSum << " Suma przychodow: " << incomesSum << " Bilans: " <<  bilans<<endl;
+    system("pause");
+
+}
+
+void OperationMeneger::showBilansLastMonth() {
+    string currentDate = MetodyPomocnicze::getCurrentDate();
+    vector <int> previousMonth = MetodyPomocnicze::findPreviousMonth(currentDate); //vector <string> findPreviousMonth(string dateWithDashes)
+
+    vector <Income> incomesForBilans = findIncomesFromPeriod(previousMonth[0], previousMonth[1]);
+    vector <Expense> expensesForBilans = findExpensesFromPeriod(previousMonth[0], previousMonth[1]);
+    incomesForBilans = sortIncomes(incomesForBilans);
+    expensesForBilans = sortExpenses(expensesForBilans);
+    double incomesSum = 0.0, expensesSum = 0.0;
+    double bilans = 0.0;
+    for(size_t i = 0; i<incomesForBilans.size() ; i++) {
+        incomesSum+=incomesForBilans[i].getAmount();
+    }
+
+    for(size_t i = 0; i<expensesForBilans.size() ; i++) {
+        expensesSum+=expensesForBilans[i].getAmount();
+    }
+    bilans = incomesSum - expensesSum;
+
+    showIncomes(incomesForBilans);
+    showExpenses(expensesForBilans);
+
+    cout <<  "__________________________________"<<endl;
+    cout<< "Suma wydatkow: " << expensesSum << " Suma przychodow: " << incomesSum << " Bilans: " << bilans<<endl;
+    system("pause");
+
+}

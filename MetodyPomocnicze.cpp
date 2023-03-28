@@ -32,6 +32,7 @@ string MetodyPomocnicze::pobierzLiczbe(string tekst, int pozycjaZnaku) {
 
 
 char MetodyPomocnicze::wczytajZnak() {
+
     string wejscie = "";
     char znak  = {0};
 
@@ -54,12 +55,11 @@ string MetodyPomocnicze::zamienPierwszaLitereNaDuzaAPozostaleNaMale(string tekst
     }
     return tekst;
 }
-int MetodyPomocnicze::wczytajLiczbeCalkowita(){
+int MetodyPomocnicze::wczytajLiczbeCalkowita() {
     string wejscie = "";
     int liczba = 0;
 
-    while (true)
-    {
+    while (true) {
         getline(cin, wejscie);
 
         stringstream myStream(wejscie);
@@ -70,12 +70,11 @@ int MetodyPomocnicze::wczytajLiczbeCalkowita(){
     return liczba;
 }
 
-string MetodyPomocnicze::doubleToString(double number)
-{
-	ostringstream ss;
-	ss << number;
-	string str = ss.str();
-	return str;
+string MetodyPomocnicze::doubleToString(double number) {
+    ostringstream ss;
+    ss << number;
+    string str = ss.str();
+    return str;
 }
 
 double MetodyPomocnicze::pobierzDouble() {
@@ -107,17 +106,20 @@ vector <string> MetodyPomocnicze::splitStringByDash(string str) {
     }
     return strings;
 }
-/*string MetodyPomocnicze::getDate() {
-    string dataString = wczytajLinie();
-    if(checkDate(dataString)) {
-        return dataString;
-    } //else {
-       // dataString = "";
-       // return dataString;
-    //}
-}*/
 
 bool MetodyPomocnicze::checkDate(string dateWithDashes) {
+
+    string currentDate = MetodyPomocnicze::getCurrentDate();
+    vector <string> currentDateSeparated = splitStringByDash(currentDate);
+    vector <int> currentDateInt;
+    for(size_t i= 0; i < currentDateSeparated.size(); i++) {
+        int temp = konwersjaStringNaInt(currentDateSeparated[i]);
+        currentDateInt.push_back(temp);
+    }
+    int currentYear, currentMonth, currentDay;
+    currentYear = currentDateInt[0];
+    currentMonth = currentDateInt[1];
+    currentDay = currentDateInt[2];
 
     vector <string> strings;
     strings = splitStringByDash(dateWithDashes);
@@ -125,13 +127,23 @@ bool MetodyPomocnicze::checkDate(string dateWithDashes) {
     int year = 0;
     int month = 0;
     int day = 0;
-    //int dateInt = 0;
-    year = konwersjaStringNaInt(strings[0]);
-    month = konwersjaStringNaInt(strings[1]);
-    day = konwersjaStringNaInt(strings[2]);
+
+    if(strings.size()==3) {
+        year = konwersjaStringNaInt(strings[0]);
+        month = konwersjaStringNaInt(strings[1]);
+        day = konwersjaStringNaInt(strings[2]);
+    }
+
     int maxDays = 0;
 
-    if (year >= 2000) {
+
+    if(year == currentYear) {
+        if(month > currentMonth) {
+            cout << "Prosze podac date w formacie rrrr-mm-dd najpozniej do konca miesiaca!"<<endl;
+            return false;
+        }
+    }
+    if (year >= 2000 && year <= currentYear) {
         if((month==2) && ((year%400==0) || ((year%100!=0)&&(year%4==0)))) {
             maxDays = 29;
         } else if(month==2) {
@@ -140,28 +152,55 @@ bool MetodyPomocnicze::checkDate(string dateWithDashes) {
             maxDays = 31;
         } else if(month==4 || month==6 || month==9 || month==11) {
             maxDays = 30;
-        } //else cout<<"Invalid month";
+        }
         if(day <= maxDays && day>0 ) {
             return true;
         } else {
+            cout << "Prosze podac date po roku 2000 w formacie rrrr-mm-dd!"<<endl;
             return false;
         }
-
     } else {
-        //cout << "Prosze podac date po roku 2000 w formacie rrrr-mm-dd: ";
+        cout << "Prosze podac date po roku 2000 w formacie rrrr-mm-dd!"<<endl;
         return false;
     }
-
 }
 
-string MetodyPomocnicze::getCurrentDate()
-{
+string MetodyPomocnicze::getCurrentDate() {
     auto timeNow = std::time(nullptr);
     auto tm = *std::localtime(&timeNow);
 
     std::ostringstream oss;
     oss << std::put_time(&tm, "%Y-%m-%d");
     auto str = oss.str();
-    //cout << str;
+
     return str;
+}
+
+vector <int>  MetodyPomocnicze::findPreviousMonth(string dateWithDashes) {
+
+    vector <string> strings;
+    strings = splitStringByDash(dateWithDashes);
+
+    int year = 0;
+    int month = 0;
+
+    year = konwersjaStringNaInt(strings[0]);
+    month = konwersjaStringNaInt(strings[1]);
+
+    if(month==1) {
+        year--;
+        month = 12;
+    } else {
+        month--;
+    }
+    vector <int> previousMonth;
+
+    int firstDate, lastDate;
+    firstDate = (year*10000) + (month*100) + 1;
+    lastDate = (year*10000) + (month*100) + 31;
+
+    previousMonth.push_back(firstDate);
+    previousMonth.push_back(lastDate);
+
+    return previousMonth;
 }

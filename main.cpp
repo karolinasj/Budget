@@ -10,7 +10,7 @@ using namespace std;
 
 int main() {
     char wybor;
-    PersonalBudget personalBudget("users_v01.xml", "incomes_v01.xml", "expenses_v01.xml");
+    PersonalBudget personalBudget("users.xml", "incomes.xml", "expenses.xml");
     while (true) {
         if (personalBudget.checkIfUserIsLogged() == false) {
             wybor = personalBudget.chooseMainMenuOption();
@@ -36,7 +36,6 @@ int main() {
             switch (wybor) {
             case '1':
                 personalBudget.addIncome();
-                //ksiazkaAdresowa.dodajAdresata();
                 //Dodaj przychod
                 break;
             case '2':
@@ -44,27 +43,19 @@ int main() {
                 //Dodaj wydatek
                 break;
             case '3':
-                //ksiazkaAdresowa.wyszukajAdresatowPoNazwisku();
+                personalBudget.monthlyBilans();
                 //Bilans z biezacego miesiaca
                 break;
             case '4':
-                //ksiazkaAdresowa.wyswietlWszystkichAdresatow();
+                personalBudget.previousMonthBilans();
                 //Bilans z poprzedniego miesiaca
                 break;
             case '5':
-                //ksiazkaAdresowa.usunAdresata();
+                personalBudget.choosenBilans();
                 //Bilans z wybranego okresu
-                break;
-            case '6':
-                //ksiazkaAdresowa.edytujAdresata();
-
                 break;
             case 'a':
                 personalBudget.showAll();
-                system("pause");
-                break;
-            case 's':
-                personalBudget.sortAndShowInc();
                 system("pause");
                 break;
             case '8':
